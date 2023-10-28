@@ -36,14 +36,12 @@
   background-color: rgb(96, 213, 255);
   rotate: 45deg;
   opacity: 0%;
+  transform: scale(1);
 }
 .cell::after {
   rotate: -45deg;
 }
-.cell[data-hit="true"]::before,
-.cell[data-hit="true"]::after {
-  opacity: 100%;
-}
+
 .cell.ship::before,
 .cell.ship::after {
   background-color: rgb(255, 96, 96);
@@ -56,4 +54,39 @@
 }
 .cell.ship:hover {
   background-color: rgb(95, 95, 95);
+}
+
+.cell[data-hit="true"]::before,
+.cell[data-hit="true"]::after {
+  opacity: 100%;
+}
+
+.cell[data-hit="true"]{
+  pointer-events: none;
+}
+.board.done > .cell[data-hit="true"]::before,
+.board.done > .cell[data-hit="true"]::after {
+  animation: ending 1s ease;
+  background-color: rgb(255, 137, 27);
+}
+.board.done > .cell {
+  pointer-events: none;
+}
+
+@keyframes ending {
+  0%{
+    transform: scale(1);
+  }
+  25%{
+    transform: scale(1.2);
+  }
+  50%{
+    transform: scale(1);
+  }
+  75%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  }
 }

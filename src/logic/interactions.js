@@ -10,6 +10,8 @@ export default function STARTgame() {
   board.PLACEship([1, 1], [1, 3]);
   board.PLACEship([5, 5], [5, 7]);
   board.PLACEship([3, 2], [5, 2]);
+  board.PLACEship([9, 9], [9, 9]);
+  board.PLACEship([8, 1], [8, 6]);
   PRINTships(board.GETships());
 
   const cells = document.querySelectorAll(".cell");
@@ -27,7 +29,14 @@ function attack(board, coords) {
   PRINThits(board.GEThitList());
 
   if (board.ISgameOver()) {
-    document.querySelector(".board").innerHTML = "";
-    STARTgame();
+    const htmlBOARD = document.querySelector(".board");
+    htmlBOARD.classList.add("done");
+    setTimeout(() => {
+      htmlBOARD.innerHTML = "";
+      STARTgame();
+      setTimeout(() => {
+        htmlBOARD.classList.remove("done");
+      }, 0);
+    }, 1200);
   }
 }

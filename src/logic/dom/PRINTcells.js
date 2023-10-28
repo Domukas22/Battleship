@@ -27,7 +27,11 @@ export function PRINTships(shipObjLIST) {
 export function PRINThits(hitLIST) {
   hitLIST.forEach((hitCOORDS) => {
     const targetCELL = document.querySelector(`.cell[data-cords="${hitCOORDS}"]`);
-    targetCELL.setAttribute("data-hit", true);
+    const [x, y] = hitCOORDS.split(",").map(Number);
+
+    if (x >= 0 && x <= 9 && y >= 0 && y <= 9) {
+      targetCELL.setAttribute("data-hit", true);
+    }
   });
 }
 
