@@ -4,8 +4,8 @@ import CREATEboard from "../CREATEboard";
 //
 //
 //
-describe("Board interaction", () => {
-  let board = CREATEboard();
+let board = CREATEboard();
+describe("Simple board interaction", () => {
   beforeEach(() => {
     board = CREATEboard();
   });
@@ -28,5 +28,23 @@ describe("Board interaction", () => {
       });
     });
     expect(board.ISgameOver()).toBe(true);
+  });
+});
+
+describe("Board attacks", () => {
+  beforeEach(() => {
+    board = CREATEboard();
+  });
+  test("Attacks an already hit spot", () => {
+    // place ship and attack first cell
+    board.PLACEship([1, 1], [1, 2]);
+    board.RECEIVEattack(1, 1);
+    expect(board.RECEIVEattack(1, 1)).toBe("Already hit");
+  });
+  test("Attacks a ship", () => {
+    // place ship, attack first cell, check ship cell status
+    board.PLACEship([1, 1], [1, 2]);
+    board.RECEIVEattack(1, 1);
+    expect(board.GETships()[0].GETcords()[0].hit).toBe(true);
   });
 });
