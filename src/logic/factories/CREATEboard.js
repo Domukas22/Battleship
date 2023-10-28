@@ -23,11 +23,13 @@ export default function CREATEboard() {
     // missedATTACKS.push(x, y)
   };
   const ISgameOver = function AREallShipsSunk() {
-    // loop through each shipOBJS obj
-    // return true/false
+    return shipOBJS.every((ship) => ship.isSunk() === true);
   };
+  const GETships = () => [...shipOBJS];
 
   return {
     PLACEship,
+    GETships,
+    ISgameOver,
   };
 }
