@@ -14,17 +14,17 @@ export default function CREATEship(startCORDS, endCORDS) {
   }
 
   const hit = (x, y) => {
-    const targetCell = cords.find(
-      (cord) => cord.cell[0] === x && cord.cell[1] === y,
-    );
+    const targetCell = cords.find((cord) => cord.cell[0] === x && cord.cell[1] === y);
     if (targetCell) targetCell.hit = true;
   };
   const isSunk = () => cords.every((cell) => cell.hit === true);
   const GETcords = () => [...cords];
+  const HAScords = (x, y) => cords.some((cell) => cell.cell[0] === x && cell.cell[1] === y);
 
   return {
     hit,
     isSunk,
     GETcords,
+    HAScords,
   };
 }
