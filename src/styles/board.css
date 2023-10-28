@@ -1,0 +1,59 @@
+/**/
+/**/
+/**/
+/**/
+/**/
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 45px);
+  grid-template-rows: repeat(10, 45px);
+
+  column-gap: 2px;
+  row-gap: 2px;
+
+  border-radius: 4px;
+}
+.cell {
+  border: 1px solid rgb(93, 93, 93);
+  border-radius: 1px;
+  transition: 150ms;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+.cell::before, 
+.cell::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: rgb(96, 213, 255);
+  rotate: 45deg;
+  opacity: 0%;
+}
+.cell::after {
+  rotate: -45deg;
+}
+.cell[data-hit="true"]::before,
+.cell[data-hit="true"]::after {
+  opacity: 100%;
+}
+.cell.ship::before,
+.cell.ship::after {
+  background-color: rgb(255, 96, 96);
+}
+.cell.ship {
+  background-color: rgb(87, 87, 87);
+}
+.cell:hover {
+  background-color: #ffffff1c;
+}
+.cell.ship:hover {
+  background-color: rgb(95, 95, 95);
+}
