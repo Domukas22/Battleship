@@ -6,7 +6,7 @@
   "scripts": {
     "bundle": "webpack",
     "server": "webpack serve",
-    "test": "jest"
+    "test": "jest src/logic/factories/__tests__/CREATEboard.test.js --verbose"
   },
   "keywords": [],
   "author": "",
