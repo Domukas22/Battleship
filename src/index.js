@@ -1,4 +1,4 @@
-import returnText from "./logic/function";
+import { returnText } from "./logic/function";
 import "./styles/reset.css";
 import "./styles/main.css";
 
